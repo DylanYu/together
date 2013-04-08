@@ -119,6 +119,7 @@ public class TogetherApp extends Application{
 			locData.latitude=arg0.getLatitude();
 			locData.longitude=arg0.getLongitude();
 			mylocOverlay.setData(locData);
+			mylocOverlay.enableCompass();
 			mapView.getOverlays().add(mylocOverlay);
 			mapView.refresh();
 			mapView.getController().animateTo(mylocation);

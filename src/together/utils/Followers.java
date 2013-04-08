@@ -47,18 +47,22 @@ public class Followers extends ItemizedOverlay<OverlayItem>{
 		// TODO Auto-generated constructor stub
 		//popflags=new int[list.size()];
 		//popList=new ArrayList<PopupOverlay>(list.size());
+		if(list.size()>1){
+			for (int i=0;i<list.size()-1;i++){
+				HashMap<String, Object> follower=allfollowers.get(i);
+				OverlayItem item=new OverlayItem(list.get(i), null,"用户: "+(String)follower.get("uid"));
+				overlaylist.add(item);
+				//popflags[i]=0;
+				//popList.add(null);
+	            //popList.add(new PopUpOverlay(context, mapView,new PopUpOverlay.poplistener(context,item),item));      
 
-		for (int i=0;i<list.size()-1;i++){
-			HashMap<String, Object> follower=allfollowers.get(i);
-			OverlayItem item=new OverlayItem(list.get(i), null,"用户: "+(String)follower.get("uid"));
-			overlaylist.add(item);
-			//popflags[i]=0;
-			//popList.add(null);
-            //popList.add(new PopUpOverlay(context, mapView,new PopUpOverlay.poplistener(context,item),item));      
-
+			}
 		}
-		overlaylist.add(new OverlayItem(list.get(list.size()-1), "event", "event"));
-		Log.v("together", "geopoint: "+list.get(list.size()-1).toString()+","+list.get(list.size()-2));
+		
+
+		
+		overlaylist.add(new OverlayItem(list.get(list.size()-1), "event", "当前活动"));
+		//Log.v("together", "geopoint: "+list.get(list.size()-1).toString()+","+list.get(list.size()-2));
 
 		overlaylist.get(list.size()-1).setMarker(context.getResources().getDrawable(R.drawable.current_event));
 

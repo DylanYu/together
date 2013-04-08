@@ -118,6 +118,17 @@ public class LoginActivity extends Activity {
 					Toast.LENGTH_SHORT).show();
 			return;
 		}
+		if (!(name_str.equals("朱荣飞") || name_str.equals("余东亮") 
+				|| name_str.equals("张婕") || name_str.equals("曹老师")
+				|| name_str.equals("余老师") || name_str.equals("马老师")
+				|| name_str.equals("胡老师") || name_str.equals("tester")
+				|| name_str.equals("某同学"))) {
+			uid.startAnimation(shakeAnim);
+			progressDialog.cancel();
+			Toast.makeText(LoginActivity.this, "请输入正确的测试账号",
+					Toast.LENGTH_SHORT).show();
+			return;
+		}
 		if (pwd_str == null || pwd_str.trim().equals("")) {
 			pwd.startAnimation(shakeAnim);
 			progressDialog.cancel();

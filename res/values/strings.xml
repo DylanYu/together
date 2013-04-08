@@ -81,5 +81,5 @@
     <string name="eating">吃饭</string>
     <string name="singing">唱歌</string>
     <string name="locate">定位</string>
-    <string name="otheruser">周围用户</string>
+    <string name="same_user">参与用户</string>
 </resources>
