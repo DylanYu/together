@@ -41,11 +41,11 @@ public class JsonHandler {
 
 
 	/**
-	 * get a list of more apps
+	 * get a list of msgs
 	 * 
 	 * @param json
 	 *            json data
-	 * @return a List of More apps
+	 * @return list a List of eventMsg
 	 * @throws JSONException
 	 * */
 	 
@@ -54,21 +54,20 @@ public class JsonHandler {
 		JSONObject object = new JSONObject("{\"star\":" + json + "}");
 		JSONArray array = object.getJSONArray("star");
 		int length = array.length();
-		for (int i = 0; i < length; i++) {
-//			JSONObject object1 = array.getJSONObject(i);
-//			String obj2 = object1.getString("star");
-//			JSONObject obj = new JSONObject(array.getJSONObject(i).getString("star"));
-			eMsg = new EventMsg();
-			//TODO 获取正确信息
-//			msg.setEvent(obj.getString("event"));
-//			msg.setId(obj.getString("id"));
-//			msg.setName(obj.getString("name"));
-//			msg.setTime(obj.getString("time"));
+		for (int i = 0; i < length; i++) { 
+			eMsg = new EventMsg(); 
 			eMsgs.add(eMsg);
 		}
 		return eMsgs;
 	}
 	
+	/***
+	 * get Event messages
+	 * @param json jsonString
+	 * @param type typeString
+	 * @return list List<EventMsg>
+	 * @throws JSONException
+	 */
 	public List<EventMsg> getEventMessages(String json, String type) throws JSONException {
 		eMsgs = new ArrayList<EventMsg>();
 		JSONObject object = new JSONObject(json);
@@ -93,6 +92,13 @@ public class JsonHandler {
 		return eMsgs;
 	}
 	
+	/***
+	 * get user messages
+	 * @param json jsonString
+	 * @param type typeString
+	 * @return list List<UserMSg>
+	 * @throws JSONException
+	 */
 	public List<UserMsg> getUserMessages(String json, String type) throws JSONException {
 		uMsgs = new ArrayList<UserMsg>();
 		JSONObject object = new JSONObject(json);

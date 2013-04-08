@@ -43,10 +43,18 @@ public class GalleryAdapter extends SimpleAdapter {
 	private int imageWidth = 0;
 	private int imageHeight = 0;
 
+	/***
+	 * get image width
+	 * @return width imageWidth
+	 */
 	public int getImageWidth() {
 		return imageWidth;
 	}
 
+	/***
+	 * get image height
+	 * @return height imageHeight
+	 */
 	public int getImageHeight() {
 		return imageHeight;
 	}
@@ -77,6 +85,17 @@ public class GalleryAdapter extends SimpleAdapter {
 	 * */
 	ReflectionImageLoader imageLoader;
 
+	/***
+	 * constructor
+	 * @param context Context
+	 * @param data List<HashMap<String,Object>>
+	 * @param res resource 
+	 * @param from fromArray
+	 * @param to ToArray
+	 * @param w width
+	 * @param h height
+	 * @param d density
+	 */
 	public GalleryAdapter(Context context, List<HashMap<String, Object>> data,
 			int resource, String[] from, int[] to, int w, int h, float d) {
 		super(context, data, resource, from, to);
@@ -160,6 +179,14 @@ public class GalleryAdapter extends SimpleAdapter {
 		return createViewFromResource(position, convertView, parent, mResource);
 	}
 
+	/***
+	 * create view from resource
+	 * @param position imagePosition
+	 * @param convertView View 
+	 * @param parent ViewGroup
+	 * @param res resource 
+	 * @return
+	 */
 	private View createViewFromResource(int position, View convertView,
 			ViewGroup parent, int resource) {
 		View v;
@@ -180,6 +207,11 @@ public class GalleryAdapter extends SimpleAdapter {
 		return v;
 	}
 
+	/***
+	 * bind view
+	 * @param pos position
+	 * @param view View
+	 */
 	private void bindView(int position, View view) {
 		@SuppressWarnings("rawtypes")
 		final Map dataSet = mData.get(position % mData.size());
@@ -285,8 +317,7 @@ public class GalleryAdapter extends SimpleAdapter {
 			galleryWidth = 240;
 		imageWidth = imageLoader.getImageWidth();
 		imageHeight = imageLoader.getImageHeight();
-		// int delta = screenWidth > screenHeight ? screenWidth:screenHeight;
-		int galleryHeight;
+ 		int galleryHeight;
 		if (screenWidth > 720)
 			galleryHeight = (int) (196 * 2 * screenDensity * 5 / 4);
 		else

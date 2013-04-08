@@ -79,12 +79,22 @@ public class MySimpleAdapter extends SimpleAdapter {
 
 	}
 
+	/***
+	 * construtor with params
+	 * @param context Context
+	 * @param data List<HashMap<String,Object>>
+	 * @param res resource 
+	 * @param from fromArray
+	 * @param to toArray
+	 * @param f flag
+	 * @param m maxsize
+	 */
 	public MySimpleAdapter(Context context, List<HashMap<String, Object>> data,
 			int resource, String[] from, int[] to, boolean f, int m) {
 		super(context, data, resource, from, to);
 		mContext = context;
 		mData = data;
-		mResource = resource;// 是listview的每一个子项的id
+		mResource = resource;// 是list view的每一个子项的id
 		mFrom = from;
 		mTo = to;
 		mInflater = (LayoutInflater) context
@@ -93,6 +103,15 @@ public class MySimpleAdapter extends SimpleAdapter {
 		maxSize = m;
 	}
 
+	/***
+	 * constructor with params
+	 * @param context Context
+	 * @param data List<HashMap<String,Object>>
+	 * @param res resource 
+	 * @param from fromArray
+	 * @param to toArray
+	 * @param m maxSize
+	 */
 	public MySimpleAdapter(Context context, List<HashMap<String, Object>> data,
 			int resource, String[] from, int[] to, int m) {
 		super(context, data, resource, from, to);
@@ -213,6 +232,14 @@ public class MySimpleAdapter extends SimpleAdapter {
 		return createViewFromResource(position, convertView, parent, mResource);
 	}
 
+	/***
+	 * create view From Resource
+	 * @param pos position
+	 * @param convertView View
+	 * @param parent ViewGroup
+	 * @param res resource
+	 * @return view View
+	 */
 	private View createViewFromResource(int position, View convertView,
 			ViewGroup parent, int resource) {
 		View v;
@@ -232,6 +259,11 @@ public class MySimpleAdapter extends SimpleAdapter {
 		return v;
 	}
 
+	/***
+	 * bind view
+	 * @param pos position
+	 * @param view View
+	 */
 	private void bindView(int position, View view) {
 		@SuppressWarnings("rawtypes")
 		final Map dataSet = mData.get(position);
@@ -299,48 +331,7 @@ public class MySimpleAdapter extends SimpleAdapter {
 		}
 	}
 
-	// private boolean createReflectedImages() {
-	// final int reflectionGap = 4;
-	// //int index = 0;
-	//
-	// for (int imageId : mTo) {
-	// Bitmap originalImage =
-	// BitmapFactory.decodeResource(mContext.getResources(), imageId);
-	// int width = originalImage.getWidth();
-	// int height = originalImage.getHeight();
-	//
-	// Matrix matrix = new Matrix();
-	// matrix.preScale(1, -1);
-	//
-	// Bitmap reflectionImage = Bitmap.createBitmap(originalImage, 0,height / 2,
-	// width, height / 2, matrix, false);
-	// Bitmap bitmapWithReflection = Bitmap.createBitmap(width,(height + height
-	// / 2), Config.ARGB_8888);
-	//
-	// Canvas canvas = new Canvas(bitmapWithReflection);
-	// canvas.drawBitmap(originalImage, 0, 0, null);
-	// Paint deafaultPaint = new Paint();
-	// canvas.drawRect(0, height, width, height + reflectionGap,
-	// deafaultPaint);
-	//
-	// canvas.drawBitmap(reflectionImage, 0, height + reflectionGap, null);
-	// Paint paint = new Paint();
-	// LinearGradient shader = new LinearGradient(0, originalImage
-	// .getHeight(), 0, bitmapWithReflection.getHeight()
-	// + reflectionGap, 0x70ffffff, 0x00ffffff, TileMode.CLAMP);
-	//
-	// paint.setShader(shader);
-	//
-	// paint.setXfermode(new PorterDuffXfermode(Mode.DST_IN));
-	// canvas.drawRect(0, height, width, bitmapWithReflection.getHeight()
-	// + reflectionGap, paint);
-	//
-	// ImageView imageView = new ImageView(mContext);
-	// imageView.setImageBitmap(bitmapWithReflection);
-	// imageView.setLayoutParams(new DetailGallery.LayoutParams(180, 240));
-	// }
-	// return true;
-	// }
+	 
 	/**
 	 * Called by bindView() to set the image for an ImageView but only if there
 	 * is no existing ViewBinder or if the existing ViewBinder cannot handle

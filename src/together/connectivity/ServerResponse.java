@@ -13,6 +13,14 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 public class ServerResponse { 
+	/***
+	 * get response from server
+	 * @param url
+	 * @param json
+	 * @return result String
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
 	public static String getResponse(String url, JSONObject json) throws ClientProtocolException, IOException {
 		String result = null;
 		//请求数据
