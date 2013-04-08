@@ -26,6 +26,9 @@ public class TogetherApp extends Application{
 	private static GeoPoint mylocation; 
 
 
+	/**
+	 * 创建application
+	 * */
 	public void onCreate(){
 		super.onCreate();
 		mApp=this;
@@ -34,6 +37,9 @@ public class TogetherApp extends Application{
 
 	}
 
+	/**
+	 * 终止application
+	 * */
 	public void onTerminate(){
 		if (mMapManager!=null)
 			mMapManager.destroy();
@@ -41,6 +47,10 @@ public class TogetherApp extends Application{
 		super.onTerminate();
 	}
 
+	/**
+	 * 初始化地图manager
+	 * @param context Context
+	 * */
 	public void initMapManager(Context context){
 
 		Log.v("app", "init mapmanager");
@@ -52,23 +62,43 @@ public class TogetherApp extends Application{
 
 	}
 
+	/***
+	 * 获得应用instance
+	 * @return application
+	 */
 	public static Application getInstance(){
 		return mApp;
 	}
 
+	/***
+	 * 获得地图管理器
+	 * @return manager BMapManager
+	 */
 	public BMapManager getMapManager(){
 		return mMapManager;
 	}
 
+	/***
+	 * 获得LocationClient
+	 * @return client LocationClient
+	 */
 	public static LocationClient getLocationClient(){
 		return mLocationClient;
 	}
 
+	/***
+	 * 获得当前位置
+	 * @return point GeoPoint
+	 */
 	public static GeoPoint getMyLocation(){
 		return mylocation;
 	}
 
-	// 常用事件监听，用来处理通常的网络错误，授权验证错误等
+	/***
+	 *  常用事件监听，用来处理通常的网络错误，授权验证错误等
+	 * @author zhang
+	 *
+	 */
     static class MyGeneralListener implements MKGeneralListener {
         
         @Override
@@ -94,6 +124,11 @@ public class TogetherApp extends Application{
         }
     }
     
+    /***
+     * 位置监听器
+     * @author zhang
+     *
+     */
     static class MyLocationListener implements BDLocationListener{
     	
     	private MapView mapView;
@@ -127,7 +162,6 @@ public class TogetherApp extends Application{
 
 		@Override
 		public void onReceivePoi(BDLocation arg0) {
-			// TODO Auto-generated method stub
 
 		}
     	

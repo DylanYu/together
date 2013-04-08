@@ -7,13 +7,7 @@ import java.util.List;
 
 import together.activity.R;
 import together.activity.TogetherApp;
-
-import android.R.bool;
-import android.R.integer;
-import android.R.string;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.widget.Toast;
@@ -22,20 +16,15 @@ import com.baidu.mapapi.BMapManager;
 import com.baidu.mapapi.map.ItemizedOverlay;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.OverlayItem;
-import com.baidu.mapapi.map.PopupClickListener;
-import com.baidu.mapapi.map.PopupOverlay;
-import com.baidu.mapapi.search.MKPlanNode;
-import com.baidu.mapapi.search.MKSearch;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
 
 public class Followers extends ItemizedOverlay<OverlayItem>{
 
 	private List<OverlayItem> overlaylist=new ArrayList<OverlayItem>();
-	//private List<PopupOverlay> popList;
-	//private int[] popflags;
+	 
 	private Context context;
 	private MapView mapView;
-	private static int selected=0;
+//	private static int selected=0;
 	private BMapManager mapManager;
 
 	public Followers(Context context,Drawable d,List<GeoPoint> list,MapView mapView,ArrayList<HashMap<String, Object>> allfollowers) throws IOException {
@@ -81,14 +70,12 @@ public class Followers extends ItemizedOverlay<OverlayItem>{
 
 	@Override
 	protected OverlayItem createItem(int i) {
-		// TODO Auto-generated method stub
-		return overlaylist.get(i);
+ 		return overlaylist.get(i);
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return overlaylist.size();
+ 		return overlaylist.size();
 	}
 
 

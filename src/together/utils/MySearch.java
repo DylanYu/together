@@ -15,7 +15,6 @@ import com.baidu.mapapi.search.MKSearchListener;
 import com.baidu.mapapi.search.MKSuggestionResult;
 import com.baidu.mapapi.search.MKTransitRouteResult;
 import com.baidu.mapapi.search.MKWalkingRouteResult;
-import com.baidu.platform.comapi.basestruct.GeoPoint;
 
 public class MySearch extends MKSearch{
 	

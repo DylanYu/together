@@ -8,10 +8,6 @@ import java.util.List;
 
 import together.activity.R;
 import together.activity.TogetherApp;
-
-import android.R.bool;
-import android.R.integer;
-import android.R.string;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,14 +21,12 @@ import com.baidu.mapapi.map.OverlayItem;
 import com.baidu.mapapi.map.PopupClickListener;
 import com.baidu.mapapi.map.PopupOverlay;
 import com.baidu.mapapi.search.MKPlanNode;
-import com.baidu.mapapi.search.MKSearch;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
 
 public class Overlays extends ItemizedOverlay<OverlayItem>{
 
 	private List<OverlayItem> overlaylist=new ArrayList<OverlayItem>();
-	//private List<PopupOverlay> popList;
-	//private int[] popflags;
+	 
 	private Context context;
 	private MapView mapView;
 	private static int selected=0;
@@ -43,18 +37,13 @@ public class Overlays extends ItemizedOverlay<OverlayItem>{
 		this.context=context;
 		this.mapView=mapView;
 		mapManager=((TogetherApp)context.getApplicationContext()).getMapManager();
-		//this.popList=popList;
-		// TODO Auto-generated constructor stub
-		//popflags=new int[list.size()];
-		//popList=new ArrayList<PopupOverlay>(list.size());
+		 
 
 		for (int i=0;i<list.size();i++){
 			HashMap<String, Object> event=allevents.get(i);
 			OverlayItem item=new OverlayItem(list.get(i), "event: "+(String)event.get("eid"),(String)event.get("description"));
 			overlaylist.add(item);
-			//popflags[i]=0;
-			//popList.add(null);
-            //popList.add(new PopUpOverlay(context, mapView,new PopUpOverlay.poplistener(context,item),item));      
+			 
 
 		}
 
@@ -68,14 +57,12 @@ public class Overlays extends ItemizedOverlay<OverlayItem>{
 
 	@Override
 	protected OverlayItem createItem(int i) {
-		// TODO Auto-generated method stub
-		return overlaylist.get(i);
+ 		return overlaylist.get(i);
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return overlaylist.size();
+ 		return overlaylist.size();
 	}
 
 
@@ -92,8 +79,7 @@ public class Overlays extends ItemizedOverlay<OverlayItem>{
 
 
 			public void onClickedPopup(int index) {
-				// TODO Auto-generated method stub
-				System.out.println(selected+" "+overlaylist.get(selected).getSnippet());
+ 				System.out.println(selected+" "+overlaylist.get(selected).getSnippet());
 				Toast.makeText(context, "活动:" + overlaylist.get(selected).getSnippet(), Toast.LENGTH_SHORT).show();
 				MySearch mySearch=new MySearch(context, mapView, mapManager);
 				MKPlanNode start=new MKPlanNode();
@@ -114,25 +100,13 @@ public class Overlays extends ItemizedOverlay<OverlayItem>{
 		try {
 			bmp = BitmapFactory.decodeStream(context.getAssets().open("pop.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+ 			e.printStackTrace();
 		}
 
-		/*if(bmp==null)
-			System.out.println("bmp null");*/
+		 
 		p.showPopup(bmp, overlaylist.get(i).getPoint(), 100);
 
-		/*if(popflags[i]==0){
-			System.out.println(i+" "+overlaylist.get(i).getPoint().toString());
-			popList.get(i).showPopup(bmp, overlaylist.get(i).getPoint(), 32);
-            popflags[i]=1;
-		}
-		else{
-			System.out.println(i+" hide");
-			popList.get(i).hidePop();
-			popflags[i]=0;
-		}*/
-
+		 
 		return true;
 	}
 

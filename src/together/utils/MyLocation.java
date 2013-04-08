@@ -1,9 +1,7 @@
 package together.utils;
 
-import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
-import android.content.Context;
 
 public class MyLocation {
 	

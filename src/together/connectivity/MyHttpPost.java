@@ -37,6 +37,7 @@ public class MyHttpPost {
 
 	/**
 	 * init post
+	 * @param url String
 	 * */
 	public void noparameterHttp(String url) {
 		this.httpclient = new DefaultHttpClient();
@@ -67,6 +68,7 @@ public class MyHttpPost {
 
 	/**
 	 * post the data
+	 * @return returnConnection String
 	 * */
 	public String doPost() {
 		try {
@@ -86,6 +88,11 @@ public class MyHttpPost {
 		return returnConnection;
 	}
 
+	/***
+	 * convert stream to String
+	 * @param is inputStream
+	 * @return str String
+	 */
 	private String convertStreamToString(InputStream is) {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 		StringBuilder sb = new StringBuilder();

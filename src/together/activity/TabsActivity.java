@@ -18,28 +18,28 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class TabsActivity extends ActivityGroup {
 
 	private LinearLayout bodylayout;
-//	private RelativeLayout root;
-	private LinearLayout tabMain;
+ 	private LinearLayout tabMain;
 	private LinearLayout tabStar;
 	private LinearLayout tabColumn;
 	private LinearLayout tabMore;
-//	private LinearLayout tab_layout;
-	private int current = 1;
+ 	private int current = 1;
 	private View viewHome;
 	private View viewMore;
 	private View viewColumn;
 	private View viewStar;
 	private Dialog quit_builder = null;
-	// private static final String tag = "InMusic";
-	private LinearLayout.LayoutParams linearLayouttParams;
+ 	private LinearLayout.LayoutParams linearLayouttParams;
 	final int WRAP_CONTENT = ViewGroup.LayoutParams.WRAP_CONTENT;
-
+	
+	/***
+	 * 初始化activity
+	 * @param instance bundle
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -105,6 +105,9 @@ public class TabsActivity extends ActivityGroup {
 		bodylayout.addView(viewHome, linearLayouttParams);
 	}
 
+	/**
+	 * catch menu key and back key
+	 * */
 	@Override
 	public boolean onKeyUp(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_MENU) {
@@ -118,9 +121,11 @@ public class TabsActivity extends ActivityGroup {
 			return super.onKeyDown(keyCode, event);
 	}
 
+	/**
+	 * 初始化ui
+	 * */
 	private void initUI() {
 		setContentView(R.layout.tab);
-//		root = (RelativeLayout) findViewById(R.id.roots);
 		bodylayout = (LinearLayout) findViewById(R.id.bodylayout);
 
 		tabMain = (LinearLayout) findViewById(R.id.tab_main_layout);
@@ -129,12 +134,15 @@ public class TabsActivity extends ActivityGroup {
 		tabMore = (LinearLayout) findViewById(R.id.tab_more_layout);
 
 		tabMain.setOnClickListener(new OnTabMainClickListener());
-		tabStar.setOnClickListener(new OnTabStarClickListener());
-		tabColumn.setOnClickListener(new OnTabColumnClickListener());
-		tabMore.setOnClickListener(new OnTabMoreClickListener());
+		tabStar.setOnClickListener(new OnTabMsgClickListener());
+		tabColumn.setOnClickListener(new OnTabFriendClickListener());
+		tabMore.setOnClickListener(new OnTabSettingsClickListener());
 
 	}
 
+	/**
+	 * 点击main tab事件
+	 * */
 	private class OnTabMainClickListener implements OnClickListener {
 		public void onClick(View v) {
 			if (current != R.id.tab_main_layout) {
@@ -153,7 +161,12 @@ public class TabsActivity extends ActivityGroup {
 		}
 	};
 
-	private class OnTabStarClickListener implements OnClickListener {
+	/***
+	 * 点击msg事件
+	 * @author zhang
+	 *
+	 */
+	private class OnTabMsgClickListener implements OnClickListener {
 		public void onClick(View v) {
 			viewStar = getLocalActivityManager().startActivity(
 					"indexStar",
@@ -169,7 +182,12 @@ public class TabsActivity extends ActivityGroup {
 		}
 	};
 
-	private class OnTabColumnClickListener implements OnClickListener {
+	/***
+	 * 点击friend事件
+	 * @author zhang
+	 *
+	 */
+	private class OnTabFriendClickListener implements OnClickListener {
 		public void onClick(View v) {
 			viewColumn = getLocalActivityManager().startActivity(
 					"indexColumn",
@@ -185,7 +203,12 @@ public class TabsActivity extends ActivityGroup {
 		}
 	};
 
-	private class OnTabMoreClickListener implements OnClickListener {
+	/****
+	 * 点击settings事件
+	 * @author zhang
+	 *
+	 */
+	private class OnTabSettingsClickListener implements OnClickListener {
 		public void onClick(View v) {
 			viewMore = getLocalActivityManager().startActivity(
 					"indexMore",
@@ -211,6 +234,10 @@ public class TabsActivity extends ActivityGroup {
 		super.onDestroy();
 	}
 
+	/***
+	 * 点击menu按钮
+	 * @param menu Menu
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);

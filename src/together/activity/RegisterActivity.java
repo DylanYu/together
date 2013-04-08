@@ -53,6 +53,11 @@ public class RegisterActivity extends Activity {
 		}
 	};
 
+	/**
+	 * 初始化activity
+	 * @param instance Bundle
+	 * 
+	 * */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
